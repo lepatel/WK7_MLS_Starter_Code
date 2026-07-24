@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
 import { fetchRecentThreads } from "../../services/threadService";
 import ThreadList from "../../components/ThreadList/ThreadList";
-import { Container, Card } from "react-bootstrap";
+import CreateThreadForm from "../../components/Forms/CreateThreadForm";
+import { Container, Card, Button } from "react-bootstrap";
 import "./Home.css";
 
 export default function Home() {
   const [threads, setThreads] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const loadThreads = async () => {
-      // Your Code Here
+      setLoading(true);
+      setError(null);
+      try {
+        const data = await fetchRecentThreads();
+        setThreads(data);
+      } catch (err) {
+        setError(err.message || "Failed to load threads.");
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadThreads();
@@ -32,12 +43,25 @@ export default function Home() {
       <Container fluid className="home-content">
         <Card className="border-0 rounded-3 shadow-sm mb-3">
           <Card.Body className="p-3 p-md-4">
-            <h1
-              className="fs-4 fs-md-3 fw-bold mb-3"
-              style={{ color: "var(--text-dark)" }}
-            >
-              🏠 Home Feed
-            </h1>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <h1
+                className="fs-4 fs-md-3 fw-bold mb-0"
+                style={{ color: "var(--text-dark)" }}
+              >
+                🏠 Home Feed
+              </h1>
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={() => setShowForm((prev) => !prev)}
+              >
+                {showForm ? "✕ Close" : "➕ Create"}
+              </Button>
+            </div>
+
+            {showForm && (
+              <CreateThreadForm onClose={() => setShowForm(false)} />
+            )}
 
             {loading ? (
               <Card.Text className="text-muted text-center py-4">

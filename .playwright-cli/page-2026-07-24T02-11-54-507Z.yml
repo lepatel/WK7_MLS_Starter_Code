@@ -1,0 +1,9 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - heading "ThreadHive" [level=1] [ref=e7] [cursor=pointer]
+      - generic [ref=e8]:
+        - button "Login" [ref=e9] [cursor=pointer]
+        - button "Register" [ref=e10] [cursor=pointer]
+  - main [ref=e12]
+  - contentinfo [ref=e13]: © 2025 ThreadHive

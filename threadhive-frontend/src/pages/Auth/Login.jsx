@@ -10,6 +10,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [info, setInfo] = useState(null);
+  const { loginUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -25,7 +26,18 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    //Your Code Here
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await login(form);
+      loginUser(data);
+      navigate("/");
+    } catch (err) {
+      setError(err.message || "Login failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

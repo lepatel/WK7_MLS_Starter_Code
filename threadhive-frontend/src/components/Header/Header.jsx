@@ -5,18 +5,19 @@ import "./Header.css";
 
 function Header() {
   const navigate = useNavigate();
-  const { token, user } = { token: null, user: null }; // Placeholder, replace with useAuth()
+  const { token, user, logout } = useAuth();
 
   const handleLogin = () => {
-    // Your Code Here
+    navigate("/login");
   };
 
   const handleSignup = () => {
-    // Your Code Here
+    navigate("/register");
   };
 
   const handleLogout = () => {
-    // Your Code Here
+    logout();
+    navigate("/login");
   };
 
   return (

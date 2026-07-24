@@ -1,0 +1,23 @@
+- generic [ref=f1e3]:
+  - navigation [ref=f1e4]:
+    - generic [ref=f1e5]:
+      - heading "ThreadHive" [level=1] [ref=f1e7] [cursor=pointer]
+      - generic [ref=f1e8]:
+        - button "Login" [ref=f1e88] [cursor=pointer]
+        - button "Register" [active] [ref=f1e89] [cursor=pointer]
+  - main [ref=f1e12]:
+    - generic [ref=f1e91]:
+      - heading "Login" [level=2] [ref=f1e92]
+      - generic [ref=f1e93]:
+        - generic [ref=f1e94]:
+          - textbox "Email" [ref=f1e95]:
+            - /placeholder: " "
+          - generic: Email
+        - generic [ref=f1e96]:
+          - textbox "Password" [ref=f1e97]:
+            - /placeholder: " "
+          - generic: Password
+        - button " Login" [ref=f1e98] [cursor=pointer]:
+          - generic [ref=f1e99]: 
+          - text: Login
+  - contentinfo [ref=f1e25]: © 2025 ThreadHive
